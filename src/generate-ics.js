@@ -19,7 +19,7 @@ const insertLunarDates = (startYear, endYear) => {
   for (let date = startDate; date.isSameOrBefore(endDate); date.add(1, 'days')) {
     const lunarDate = new LunarDate(date.toDate());
     const summary = `${lunarDate.date}/${lunarDate.month} ` + (lunarDate.solarTerm ? lunarDate.solarTerm : '');
-    const description = `Ngày <b>${lunarDate.date} ${lunarDate.isVegetarianDay ? '- Ngày Ăn Chay' : ''}</b><br>Tháng <b>${lunarDate.lunarMonth}</b><br>Năm <b>${lunarDate.lunarYear} ${lunarDate.isLeap ? '- Năm Nhuận' : ''}</b><br>Giờ hoàng đạo: <b>${lunarDate.luckyHours}</b>`
+    const description = `Ngày <b>${lunarDate.lunarDate} ${lunarDate.isVegetarianDay ? '- Ngày Ăn Chay' : ''}</b><br>Tháng <b>${lunarDate.lunarMonth}</b><br>Năm <b>${lunarDate.lunarYear} ${lunarDate.isLeap ? '- Năm Nhuận' : ''}</b><br>Giờ hoàng đạo: <b>${lunarDate.luckyHours}</b>`
 
     eventsTemplate += `
 BEGIN:VEVENT
