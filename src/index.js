@@ -1,9 +1,10 @@
+
 const fs = require('fs').promises;
 const path = require('path');
 const process = require('process');
-const {authenticate} = require('@google-cloud/local-auth');
-const {google} = require('googleapis');
-const createEvents = require('./create');
+const { authenticate } = require('@google-cloud/local-auth');
+const { google } = require('googleapis');
+const insertLunarEvents = require('./insert');
 
 // If modifying these scopes, delete token.json.
 const SCOPES = ['https://www.googleapis.com/auth/calendar'];
@@ -66,4 +67,10 @@ async function authorize() {
   return client;
 }
 
-authorize().then(createEvents).catch(console.error);
+(async () => {
+  const CALENDAR_ID = '6b058fcfb668ac6f1abfb35af94c05d01640df0bc8d422fb6c5ece16d19bd7e8@group.calendar.google.com';
+  const auth = await authorize();
+
+  insertLunarEvents(auth, CALENDAR_ID, 2024, 2034)
+  
+})();
