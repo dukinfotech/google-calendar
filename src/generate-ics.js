@@ -18,7 +18,7 @@ const insertLunarDates = (startYear, endYear) => {
 
   for (let date = startDate; date.isSameOrBefore(endDate); date.add(1, 'days')) {
     const lunarDate = new LunarDate(date.toDate());
-    const isLeapYear = isLeapYear(lunarDate.year);
+    const isLeapYear = checkLeapYear(lunarDate.year);
 
     const summary = `${lunarDate.date}/${lunarDate.month} ` + (lunarDate.solarTerm ? lunarDate.solarTerm : '');
     const description = `Ngày: <b>${lunarDate.lunarDate}</b> ${lunarDate.isVegetarianDay ? '- Ngày ăn chay' : ''}<br>Tháng: <b>${lunarDate.lunarMonth}</b> ${lunarDate.isLeap ? '- Tháng nhuận' : ''}<br>Năm: <b>${lunarDate.lunarYear}</b> ${isLeapYear ? '- Năm nhuận' : ''}<br>Giờ hoàng đạo: <b>${lunarDate.luckyHours}</b>`
@@ -47,7 +47,7 @@ END:VCALENDAR`;
   fs.writeFileSync('./dist/output.ics', eventsTemplate);
 }
 
-const isLeapYear = (year) => {
+const checkLeapYear = (year) => {
   const remainder = year % 19;
   return [0, 3, 6, 9, 11, 14, 17].includes(remainder);
 }

@@ -68,7 +68,7 @@ async function authorize() {
 }
 
 (async () => {
-  const CALENDAR_ID = '6b058fcfb668ac6f1abfb35af94c05d01640df0bc8d422fb6c5ece16d19bd7e8@group.calendar.google.com';
+  const CALENDAR_ID = 'ae4e788e1e7303045b23be3c0b5ed3f2a8001e82cf07a48a1967b30540644ac7@group.calendar.google.com';
   const auth = await authorize();
 
   insertLunarEvents(auth, CALENDAR_ID, 2024, 2034)
